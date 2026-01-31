@@ -1,16 +1,14 @@
 // https://www.w3schools.com/nodejs/nodejs_readline.asp
 import { createInterface } from 'readline';
 
-
-
-const readInput = function () {
+const readUserInput = function () {
     const rl = createInterface({
         input: process.stdin,
         output: process.stdout
     });
     rl.question('Kérem adjon meg egy egész számot. : ', (num) => {
         rl.question('Kérem adjon meg egy tetszőleges szöveget. : ', (str) => {
-            console.log(str, num)
+            writeOut(num, str);
             rl.close();
         });
     });
@@ -19,4 +17,12 @@ const readInput = function () {
     });
 };
 
-readInput();
+const writeOut = function (num, str) {
+    let wholeStr = 'Megolás:';
+    for (let i = 0; i < num; i++) {
+        wholeStr += ` ${str.toUpperCase()}`;
+    };
+    console.log(wholeStr);
+};
+
+readUserInput();
