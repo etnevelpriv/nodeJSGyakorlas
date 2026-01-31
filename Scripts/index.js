@@ -1,4 +1,5 @@
 import { fillArray, findCommon } from "./feladat2.js";
+import {readList} from './feladat3.js';
 
 const masodikFeladat = async function () {
     const halmazA = await fillArray('A');
@@ -17,4 +18,9 @@ const masodikFeladat = async function () {
     process.exit(0);
 };
 
-masodikFeladat();
+const harmadikFeladat = function () {
+    readList();
+};
+
+// masodikFeladat();
+harmadikFeladat();
