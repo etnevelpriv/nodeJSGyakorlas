@@ -2,6 +2,7 @@ import { fillArray, findCommon } from "./feladat2.js";
 import { readList, countProgrammers, avgMonthlyIncome, findProgrammerByName } from './feladat3.js';
 
 const masodikFeladat = async function () {
+    console.log('2. feladat:')
     const halmazA = await fillArray('A');
     const halmazB = await fillArray('B');
 

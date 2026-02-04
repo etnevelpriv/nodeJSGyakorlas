@@ -1,6 +1,8 @@
 // https://www.w3schools.com/nodejs/nodejs_readline.asp
 import { createInterface } from 'readline';
 
+console.log('1. feladat:')
+
 const readUserInput = function () {
     const rl = createInterface({
         input: process.stdin,
