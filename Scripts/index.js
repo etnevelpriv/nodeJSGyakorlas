@@ -27,5 +27,6 @@ const harmadikFeladat = async function () {
 `)
     await findProgrammerByName(arr);
 };
+
 // masodikFeladat();
 harmadikFeladat();

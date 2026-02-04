@@ -19,7 +19,7 @@ export const fillArray = function (halmazNeve) {
                     return;
                 } else {
                     arr.push(num);
-                    console.log(`'${halmazNeve}' halmaz ${index}. eleme: ${num}`);
+                    console.log(`'${halmazNeve}' halmaz ${index + 1}. eleme: ${num}`);
                     index++;
                 };
                 pushNumToArr();
