@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createInterface } from 'readline';
 
 class Programozo {
     constructor(name, yearlyIncome, birthYear, country) {
@@ -35,9 +36,48 @@ export const readList = function () {
             const country = element.split(';')[3];
             arr.push(new Programozo(name, Number(income), Number(year), country));
         });
-        console.log(arr)
+        // console.log(arr);
+        return (arr);
 
     } catch (err) {
         throw new Error(err);
     };
+};
+
+export const countProgrammers = function (arr) {
+    return (Number(arr.length));
+};
+
+export const avgMonthlyIncome = function (arr) {
+    let allIncomeYear = 0;
+    arr.forEach((element) => {
+        allIncomeYear += (Number(element.yearlyIncome));
+    });
+    const allIncomeMonth = allIncomeYear / 12;
+    return (Math.round((allIncomeMonth / countProgrammers(arr)) * 10) / 10);
+};
+
+export const findProgrammerByName =  function (arr) {
+    const programmerPromise = new Promise((resolve) => {
+        const rl = createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        rl.question('3.4 Írd be a keresett nevet: ', (name) => {
+            let bool = false;
+            arr.forEach(person => {
+                if (person.name == name) {
+                    console.log(`Életkor: ${new Date().getFullYear() - new Date(person.birthYear)}\nSzékhely: ${person.country}\nHavi fizetés: ${Math.round(Number(person.yearlyIncome) / 12 * 361.51)} HUF`);
+                    resolve();
+                    bool = true;
+                    return;
+                };
+            });
+            rl.close();
+            if (!bool) {
+                console.log(`nincs ilyen nevű alkalmazott a cégnél`);
+            };
+        });
+    });
+    return programmerPromise;
 };

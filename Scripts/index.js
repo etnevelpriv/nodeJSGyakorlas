@@ -1,5 +1,5 @@
 import { fillArray, findCommon } from "./feladat2.js";
-import {readList} from './feladat3.js';
+import { readList, countProgrammers, avgMonthlyIncome, findProgrammerByName } from './feladat3.js';
 
 const masodikFeladat = async function () {
     const halmazA = await fillArray('A');
@@ -18,9 +18,14 @@ const masodikFeladat = async function () {
     process.exit(0);
 };
 
-const harmadikFeladat = function () {
-    readList();
+const harmadikFeladat = async function () {
+    const arr = readList();
+    console.log(`
+3. feladat:
+3.2: a cégnél ${countProgrammers(arr)} programozó dolgozik!
+3.3: az alkalmazottak átlag havi jövedelme: $${avgMonthlyIncome(arr)}
+`)
+    await findProgrammerByName(arr);
 };
-
 // masodikFeladat();
 harmadikFeladat();
